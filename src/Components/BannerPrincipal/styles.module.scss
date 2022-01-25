@@ -1,0 +1,42 @@
+.container{
+  background:var(--purple-800);
+  color: var(--white);
+  height: 450px;
+}
+
+.bannerContent{
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+
+  h1{
+    font-size: 48px;
+    padding-top: 85px;
+    padding-bottom: 40px;
+  }
+
+  span{
+    font-size:14px;
+    font-weight: 700;
+  }
+
+  .buttonsTheme{
+    max-width: 1033px;
+    margin: 0 auto;
+    padding-top: 16px;
+    
+    display:grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-column-gap: 16px;
+    justify-content: center;
+    
+    button {
+      margin-top: 12px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+    }
+  }
+
+}
