@@ -22,6 +22,8 @@ export function BannerPrincipal({ setTheme }) {
             <li> <button onClick={() => setTheme('Família')}>Família</button> </li>
             <li> <button onClick={() => setTheme('Fantasia')}>Fantasia</button> </li>
             <li> <button onClick={() => setTheme('História')}>História</button> </li>
+          </ul>
+          <ul>
             <li> <button onClick={() => setTheme('Terror')}>Terror</button> </li>
             <li> <button onClick={() => setTheme('Música')}>Música</button> </li>
             <li> <button onClick={() => setTheme('Mistério')}>Mistério</button> </li>
@@ -31,7 +33,6 @@ export function BannerPrincipal({ setTheme }) {
             <li> <button onClick={() => setTheme('Thriller')}>Thriller</button> </li>
             <li> <button onClick={() => setTheme('Guerra')}>Guerra</button> </li>
             <li> <button onClick={() => setTheme('Faroeste')}>Faroeste</button> </li>
-
           </ul>
         </div>
       </div>

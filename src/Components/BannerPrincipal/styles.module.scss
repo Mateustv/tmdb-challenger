@@ -25,18 +25,30 @@
     margin: 0 auto;
     padding-top: 16px;
     
-    display:grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-column-gap: 16px;
-    justify-content: center;
+    ul{
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     
-    button {
-      margin-top: 12px;
-      font-weight: 700;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 16px;
+      li{
+
+        padding-left: 8px;
+
+        button {
+          margin-top: 12px;
+          font-weight: 700;
+          border: none;
+          border-radius: 4px;
+          padding: 8px 16px;
+        }
+      }
+
     }
+
+
   }
 
 }
