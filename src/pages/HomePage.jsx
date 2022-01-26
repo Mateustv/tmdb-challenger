@@ -1,35 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { BannerPrincipal } from '../Components/BannerPrincipal';
 import { Header } from '../Components/Header'
-import { api } from '../utils/api';
+import { Pagination } from '../Components/Pagination';
+import { MovieContext } from '../context/MovieContext';
 
 import styles from './homePage.module.scss'
 
 export default function HomePage() {
-  const [theme, setTheme] = useState('')
-  const [movies, setMovies] = useState([])
 
-  useEffect(async () => {
-    const { data } = await api.get('/movie/popular?api_key=1b62339a09333a86b64565261d79c698')
-    const results = data.results.map(result => {
-      return {
-        id: result.id,
-        genre_ids: result.genre_ids,
-        original_title: result.original_title,
-        poster_path: result.poster_path,
-        release_date: result.release_date,
-        title: result.title,
-      }
-    })
-
-    setMovies(results)
-    console.log(results, data)
-  }, [])
+  const { movies, totalPage, handlePageChange, page } = useContext(MovieContext)
 
   return (
     <>
       <Header />
-      <BannerPrincipal setTheme={setTheme} />
+      <BannerPrincipal setGenre={handlePageChange} />
       <section className={styles.containerImages}>
         <div className={styles.listImages}>
           <ul>
@@ -42,18 +26,12 @@ export default function HomePage() {
             ))}
           </ul>
         </div>
-        <div className={styles.paginationNumbers}>
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>{'>'}</li>
-            <li>Ultima</li>
-          </ul>
-        </div>
       </section>
+      <Pagination
+        lastPage={totalPage}
+        currentPage={page}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 }
