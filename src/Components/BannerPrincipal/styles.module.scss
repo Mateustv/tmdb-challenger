@@ -45,6 +45,16 @@
           border: none;
           border-radius: 4px;
           padding: 8px 16px;
+          &.active{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--orange-600);
+            .icon{
+              padding-left: 4px;
+              font-size: 19px;
+            }
+          }
         }
       }
 

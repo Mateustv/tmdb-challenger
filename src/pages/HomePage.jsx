@@ -8,12 +8,51 @@ import styles from './homePage.module.scss'
 
 export default function HomePage() {
 
-  const { movies, totalPage, handlePageChange, page } = useContext(MovieContext)
+  const { movies, totalPage, handlePageChange, page, handleSetGenre, theme, handleSetMovies } = useContext(MovieContext)
+
+  function handleFilter(numberId) {
+    const activeFilter = theme.map(elemento => {
+      if (elemento.id === numberId) {
+        elemento.active = elemento.active ? false : true
+      }
+      return elemento
+    })
+    handleSetGenre(activeFilter)
+    setMoviesFilter()
+  }
+
+  function setMoviesFilter() {
+    const activeFilter = theme.filter(elemento => elemento.active)
+    let listProvisional = []
+
+    if (activeFilter.length > 0) {
+      for (const filter of activeFilter) {
+        const arrayMovieFilter = movies.filter(movie => movie.genre_ids.find(el => el === filter.id))
+
+        listProvisional = arrayMovieFilter.map(movie => {
+          return movie
+        })
+      }
+      listProvisional.sort(function (a, b) {
+        if (a.popularity > b.popularity) {
+          return -1;
+        }
+        if (a.popularity < b.popularity) {
+          return 1;
+        }
+
+        return 0;
+      })
+    } else {
+      listProvisional = movies
+    }
+    handleSetMovies(listProvisional)
+  }
 
   return (
     <>
       <Header />
-      <BannerPrincipal setGenre={handlePageChange} />
+      <BannerPrincipal setGenre={handleFilter} />
       <section className={styles.containerImages}>
         <div className={styles.listImages}>
           <ul>
